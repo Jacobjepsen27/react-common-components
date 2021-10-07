@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 const NavBar = styled.nav`
   display: flex;
   height: 60px;
-  background: aqua;
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
 `
 
 const Page = styled.div`
@@ -17,12 +18,11 @@ const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 300px;
-  background: aquamarine;
+  border-right: 1px solid #dadde1;
 `
 
 const MainContainer = styled.div`
   flex-grow: 1;
-  background: blanchedalmond;
 `
 
 function App() {
