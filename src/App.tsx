@@ -4,7 +4,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 const NavBar = styled.nav`
   display: flex;
+  align-items: center;
+  padding: 8px 16px;
   height: 60px;
+  box-sizing: border-box;
   background: #fff;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
 `
@@ -19,6 +22,7 @@ const SidebarContainer = styled.div`
   flex-direction: column;
   width: 300px;
   border-right: 1px solid #dadde1;
+  padding: 8px;
 `
 
 const MainContainer = styled.div`
