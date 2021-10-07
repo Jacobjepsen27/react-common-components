@@ -1,58 +1,66 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React from 'react'
+import styled from '@emotion/styled'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-const Center = styled.div`
+const NavBar = styled.nav`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 60px;
+  background: aqua;
+`
+
+const Page = styled.div`
+  display: flex;
+  flex: 1 0 auto; // flex-grow flex-shrink flex-basis shorthand
+`
+
+const SidebarContainer = styled.div`
+  display: flex;
   flex-direction: column;
-`;
+  width: 300px;
+  background: aquamarine;
+`
 
-const ContentWidth = styled.div`
-  width: 200px;
-`;
-
-export interface Formvalues {
-  fruit: string;
-  car: string;
-}
+const MainContainer = styled.div`
+  flex-grow: 1;
+  background: blanchedalmond;
+`
 
 function App() {
   return (
     <Router>
-      <Center>
-        <h1>React common components</h1>
-        <ContentWidth>
-          {/*TODO: route to different components here*/}
-        </ContentWidth>
-      </Center>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-        </ul>
-      </nav>
-      <Switch>
-        <Route path="/about">
-          <h1>About</h1>
-        </Route>
-        <Route path="/users">
-          <h1>Users</h1>
-        </Route>
-        <Route path="/">
-          <h1>Home</h1>
-        </Route>
-      </Switch>
+      <NavBar>Navbar: React common components</NavBar>
+      <Page>
+        <SidebarContainer>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/users">Users</Link>
+              </li>
+            </ul>
+          </nav>
+        </SidebarContainer>
+        <MainContainer>
+          <Switch>
+            <Route path="/about">
+              <h1>About</h1>
+            </Route>
+            <Route path="/users">
+              <h1>Users</h1>
+            </Route>
+            <Route path="/">
+              <h1>Home</h1>
+            </Route>
+          </Switch>
+        </MainContainer>
+      </Page>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App
