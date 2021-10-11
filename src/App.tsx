@@ -1,6 +1,13 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
+import { Sidebar, SidebarMenuItem } from './components/Sidebar/Sidebar'
+import { menuItems } from './components/Sidebar/menuItems'
 
 const NavBar = styled.nav`
   display: flex;
@@ -17,14 +24,6 @@ const Page = styled.div`
   flex: 1 0 auto; // flex-grow flex-shrink flex-basis shorthand
 `
 
-const SidebarContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  border-right: 1px solid #dadde1;
-  padding: 8px;
-`
-
 const MainContainer = styled.div`
   flex-grow: 1;
 `
@@ -34,32 +33,24 @@ function App() {
     <Router>
       <NavBar>Navbar: React common components</NavBar>
       <Page>
-        <SidebarContainer>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/users">Users</Link>
-              </li>
-            </ul>
-          </nav>
-        </SidebarContainer>
+        <Sidebar>
+          {menuItems.map((menuItem, index) => (
+            <SidebarMenuItem
+              key={index}
+              name={menuItem.name}
+              path={menuItem.path}
+            />
+          ))}
+        </Sidebar>
         <MainContainer>
           <Switch>
-            <Route path="/about">
-              <h1>About</h1>
+            <Route path="/select">
+              <h1>select</h1>
             </Route>
-            <Route path="/users">
-              <h1>Users</h1>
+            <Route path="/multi-select">
+              <h1>Multi select</h1>
             </Route>
-            <Route path="/">
-              <h1>Home</h1>
-            </Route>
+            <Redirect to="/select" />
           </Switch>
         </MainContainer>
       </Page>
